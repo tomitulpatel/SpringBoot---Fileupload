@@ -4,10 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data@NoArgsConstructor
@@ -24,9 +22,15 @@ public class Attachment {
     @Lob
     private byte[] data;
 
-    public Attachment(String fileName, String fileType, byte[] data) {
+    @Column(name="CREATION_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creation_date;
+
+
+    public Attachment(String fileName, String fileType, byte[] data, Date date) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.creation_date = date;
     }
 }

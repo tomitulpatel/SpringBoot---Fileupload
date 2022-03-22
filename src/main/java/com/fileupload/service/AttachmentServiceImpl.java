@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
+
 @Service
 public class AttachmentServiceImpl implements AttachmentService{
 
@@ -27,7 +29,7 @@ public class AttachmentServiceImpl implements AttachmentService{
             Attachment attachment
                     = new Attachment(fileName,
                     file.getContentType(),
-                    file.getBytes());
+                    file.getBytes(), new Date());
            // attachment.setId("1");
             return attachmentRepository.save(attachment);
 
