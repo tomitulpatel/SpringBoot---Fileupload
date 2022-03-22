@@ -26,11 +26,18 @@ public class Attachment {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation_date;
 
+   /* @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "email_id", referencedColumnName = "email_id")
+    private User user;*/
+    @Column(name="EMAIL_ID")
+    private String emailId;
 
-    public Attachment(String fileName, String fileType, byte[] data, Date date) {
+
+    public Attachment(String fileName, String fileType, byte[] data, Date date, String emailId) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
         this.creation_date = date;
+        this.emailId = emailId;
     }
 }

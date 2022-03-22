@@ -18,7 +18,7 @@ public class AttachmentServiceImpl implements AttachmentService{
     }
 
     @Override
-    public Attachment saveAttachment(MultipartFile file) throws Exception {
+    public Attachment saveAttachment(MultipartFile file, String emailId) throws Exception {
        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
        try {
             if(fileName.contains("..")) {
@@ -29,7 +29,7 @@ public class AttachmentServiceImpl implements AttachmentService{
             Attachment attachment
                     = new Attachment(fileName,
                     file.getContentType(),
-                    file.getBytes(), new Date());
+                    file.getBytes(), new Date(), emailId);
            // attachment.setId("1");
             return attachmentRepository.save(attachment);
 

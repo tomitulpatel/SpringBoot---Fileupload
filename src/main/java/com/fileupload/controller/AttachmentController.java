@@ -22,10 +22,10 @@ public class AttachmentController {
     }
 
     @PostMapping("/upload")
-    public ResponseData uploadFile(@RequestParam("file")MultipartFile file) throws Exception {
+    public ResponseData uploadFile(@RequestParam("file")MultipartFile file, @RequestParam String emailId) throws Exception {
         Attachment attachment = null;
         String downloadURl = "";
-        attachment = attachmentService.saveAttachment(file);
+        attachment = attachmentService.saveAttachment(file, emailId);
         downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/")
                 .path(attachment.getId())
