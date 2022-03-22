@@ -4,7 +4,7 @@ CREATE TABLE `attachment` (
   `file_name` varchar(5000) DEFAULT NULL,
   `file_type` varchar(5000) DEFAULT NULL,
   `creation_date` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `email_id` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `User` (
